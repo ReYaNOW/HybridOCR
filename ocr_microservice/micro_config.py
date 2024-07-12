@@ -12,7 +12,7 @@ class Config(BaseSettings):
     )
     languages: list | str = Field(
         description='Languages to load into model.'
-        'Example: [\'en\', \'ru\']'
+        "Example: ['en', 'ru']"
         '(May be different for some models).'
     )
 

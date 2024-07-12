@@ -1,5 +1,5 @@
 import uvicorn
-from fastapi import FastAPI, Depends, HTTPException, Body
+from fastapi import Body, Depends, FastAPI, HTTPException
 
 import initializers
 import recognition
