@@ -1,8 +1,4 @@
-import httpx
-from fastapi import UploadFile
-from pydantic import BaseModel, HttpUrl, NonNegativeFloat, TypeAdapter
-
-from verbumapi.recognition.config import config
+from pydantic import BaseModel, NonNegativeFloat
 
 
 class RecognizeDetails(BaseModel):
@@ -21,14 +17,3 @@ class LanguagesResponse(BaseModel):
         'Languages that were loaded into the model were '
         'successfully received'
     )
-
-
-class OCRApiRequest(BaseModel):
-    image: UploadFile | None = None
-    ocr_module: str
-    address: HttpUrl
-
-
-class TesserOCRRequest(OCRApiRequest):
-    address: HttpUrl = config.tesserocr_addr
-    ocr_module: str = 'tesserocr'
