@@ -28,6 +28,9 @@ strict = true
 [tool.coverage.run]
 parallel = true
 
+[tool.ruff]
+line-length = 80
+
 [tool.ruff.lint]
 select = [
     "E",  # pycodestyle errors
@@ -44,3 +47,6 @@ ignore = [
     "C901",  # too complex
     "W191",  # indentation contains tabs
 ]
+
+[tool.ruff.format]
+quote-style = "single"
