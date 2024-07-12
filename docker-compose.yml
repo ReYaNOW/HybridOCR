@@ -1,0 +1,84 @@
+services:
+  tesseract:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        OCR_NAME: tesseract
+    container_name: tesseract_microservice
+    environment:
+      PORT: 8081
+      OCR_MODULE: tesserocr
+      LANGUAGES: 'eng+rus'
+
+    ports:
+      - '8081:8081'
+
+  easyocr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        OCR_NAME: easyocr
+    container_name: easyocr_microservice
+    env_file:
+      - .env
+    environment:
+      PORT: 8082
+      OCR_MODULE: easyocr
+      LANGUAGES: 'en,ru'
+    volumes:
+      - easyocr_volume:/root/.EasyOCR
+    ports:
+      - '8082:8082'
+
+volumes:
+  easyocr_volume:
+
+#  paddleocr:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#      args:
+#        OCR_NAME: paddleocr
+#    container_name: paddleocr_microservice
+#    environment:
+#      PORT: 8083
+#      OCR_MODULE: paddleocr
+#      LANGUAGES: 'en'
+#    ports:
+#      - '8083:8083'
+
+
+#  db:
+#    image: postgres:12-alpine
+#    environment:
+#      POSTGRES_USER: pguser
+#      POSTGRES_PASSWORD: pgpass
+#      POSTGRES_DB: pgdb
+#      POSTGRES_HOST_AUTH_METHOD: trust
+#    volumes:
+#      - postgres_volume:/var/lib/postgresql/data
+#    container_name: task_manager_db
+#    expose:
+#      - 5432
+
+#  web:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    command: 'make dev'
+#    env_file:
+#      - .env
+#    container_name: task_manager
+#    environment:
+#      POSTGRES_HOST: db
+#    volumes:
+#      - .:/usr/local/src/task_manager
+#    ports:
+#      - '8080:8080'
+#    depends_on:
+#      - db
+#
+#volumes:
+#  postgres_volume:
