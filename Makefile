@@ -1,8 +1,12 @@
+install:
+	poetry install
+	poetry run pre-commit install
+
 dev:
 	poetry run fastapi dev verbumapi/main.py
 
 lint:
-	ruff check verbumapi/
+	poetry run ruff check verbumapi/
 
 lint_fix:
-	ruff check --fix verbumapi/
+	poetry run ruff check --fix verbumapi/
