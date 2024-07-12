@@ -6,7 +6,10 @@ dev:
 	poetry run fastapi dev verbumapi/main.py
 
 lint:
-	poetry run ruff check verbumapi/
+	poetry run ruff check
 
 lint_fix:
-	poetry run ruff check --fix verbumapi/
+	poetry run ruff check --fix
+
+format:
+	poetry run ruff format
