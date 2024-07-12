@@ -1,19 +1,19 @@
 from fastapi import APIRouter, Depends
 
+from verbumapi.recognition.config import ocr_model_addresses
 from verbumapi.recognition.dependencies import (
-    validate_img,
     check_model_exist,
     httpx_client,
+    validate_img,
 )
 from verbumapi.recognition.schemas import (
-    RecognizeResponse,
     LanguagesResponse,
+    RecognizeResponse,
 )
 from verbumapi.recognition.service import (
     request_image_api,
     request_languages_api,
 )
-from verbumapi.recognition.config import ocr_model_addresses
 
 router = APIRouter(
     prefix='/recognition',

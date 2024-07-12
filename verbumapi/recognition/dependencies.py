@@ -1,5 +1,5 @@
 import httpx
-from fastapi import UploadFile, HTTPException
+from fastapi import HTTPException, UploadFile
 
 from verbumapi.recognition.config import ocr_model_addresses
 
